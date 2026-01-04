@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Free Fire Quiz Panel — Account, Timer, Winners & Redeem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="src/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="brand">
+      <div class="logo"></div>
+      <h1>Free Fire Quiz Panel</h1>
+    </div>
+
+    <!-- Login / Signup -->
+    <section class="panel" id="authPanel">
+      <h2>Account access</h2>
+      <p class="muted">Create your account to enter the quiz. Banned UIDs cannot log in again.</p>
+      <div class="auth-wrap">
+        <div class="hero">
+          <h3>Welcome to the Free Fire Quiz</h3>
+          <p>Answer 15 questions (10 easy + 5 difficult) within 2 minutes. Get all correct to win a redeem code. Only 4 winners total.</p>
+          <p style="margin-top:6px;">Each player gets a unique entry key. Minimizing or switching tabs during the quiz will result in a ban.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Create account</h2>
+          <div class="field">
+            <label>Username</label>
+            <input id="signupUsername" class="input" placeholder="Your gamer name" />
+          </div>
+          <div class="field">
+            <label>UID</label>
+            <input id="signupUID" class="input" placeholder="Your Free Fire UID" />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input id="signupPassword" type="password" class="input" placeholder="Choose a password" />
+          </div>
+          <div class="row" style="margin-top:8px;">
+            <button class="btn" id="signupBtn">Create account & get key</button>
+          </div>
+
+          <div class="result" id="signupResult" style="margin-top:10px;"></div>
+        </div>
+
+        <div class="panel">
+          <h2>Login</h2>
+          <div class="field">
+            <label>UID</label>
+            <input id="loginUID" class="input" placeholder="Your Free Fire UID" />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input id="loginPassword" type="password" class="input" placeholder="Your password" />
+          </div>
+          <div class="row" style="margin-top:8px;">
+            <button class="btn" id="loginBtn">Login & enter quiz</button>
+          </div>
+          <div class="result" id="loginResult" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="panel hidden" id="quizPanel">
+      <div class="quiz-header">
+        <div class="winners">
+          <span class="badge">Live winners: <span id="winnerCount">0</span>/4</span>
+          <div id="winnerList" class="winners"></div>
+        </div>
+        <div class="badge">Entry key: <span id="entryKey"></span></div>
+        <div class="badge timer">Time left: <span id="timeLeft">120</span>s</div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-title" id="qTitle"></div>
+        <div class="options" id="qOptions"></div>
+        <div class="explain" id="qExplain"></div>
+        <div class="nav">
+          <button class="btn btn-secondary" id="prevBtn">Previous</button>
+          <button class="btn" id="nextBtn">Next</button>
+        </div>
+        <div class="score">Score: <span id="score">0</span> / 15 • Question <span id="qIndex">1</span> / 15</div>
+      </div>
+
+      <div class="redeem-box hidden" id="winBox">
+        <h3 style="margin:0 0 6px 0; color: var(--accent);">You have won!</h3>
+        <p class="muted">Click redeem to get your code. Only 4 winners total.</p>
+        <button class="btn" id="redeemBtn">Redeem</button>
+        <div id="redeemResult" style="margin-top:8px;"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="src/js/storage.js"></script>
+  <script src="src/js/auth.js"></script>
+  <script src="src/js/quiz.js"></script>
+  <script src="src/js/ui.js"></script>
+  <script src="src/js/app.js"></script>
+</body>
+</html>
